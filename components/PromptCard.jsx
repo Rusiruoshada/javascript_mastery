@@ -14,6 +14,10 @@ const handleCopy = () => {
   setTimeout(() => setCopy(''), 3000);
 };
 
+const {data:session} = useSession();
+const pathName = usePathname();
+const router = useRouter();
+
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
@@ -48,6 +52,22 @@ const handleCopy = () => {
       >
         {post.tag}
       </p>
+      {session?.user.id === post.creator._id && pathName === '/profile' && (
+        <div>
+          <p
+            className="font-inter text-sm green-gradient cursor-pointer"
+            onClick={handleEdit}
+          >
+            Edit
+          </p>
+          <p
+            className="font-inter text-sm orange-gradient cursor-pointer"
+            onClick={handleDelete}
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   )
 }
