@@ -6,10 +6,11 @@ import { useRouter } from "next/router";
 import Profile from "@components/Profile";
 
 const MyProfile = () => {
-    const handleEdit = () => {
-
+    const router = useRouter();
+    const handleEdit = (post) => {
+      router.push(`/update-prompt?id=${post._id}`)
     }
-    const handleDelete = () => {
+    const handleDelete = (post) => {
 
     }
 
